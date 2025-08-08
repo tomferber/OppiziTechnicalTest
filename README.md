@@ -53,6 +53,8 @@ Execution Date: 2025-08-07
 
 [Link to Google Sheets with Test Cases and Test Data](https://docs.google.com/spreadsheets/d/1HmcDNH1BCf0NafKupNGiH-dNMn1XwWoTdhj98v02qM0/edit?usp=sharing)
 
+.xlsx and .html files available in repo for offline access
+
 ### Sample Bug Report
 
 ```
