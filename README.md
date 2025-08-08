@@ -74,28 +74,31 @@ Related Issues:
 
 ### Assumptions & Risks
 
-#### Key Assumptions made
+### Key Assumptions made
 
-##### Location Type Matching Requirement
+#### Location Type Matching Requirement
 The requirements state that "location types must match" but dont specify if location is a property of routes, agents or both
+
 **Assumptions made:** 
 - Routes have location types
 - Agents have location capabilities that determine what types of routes they can perform
 
 
-##### Timezone scope
+#### Timezone scope
 No clear definition on how the system handles multi-timezone operations
+
 **Assumptions made:** 
 - Campaigns operate in a single time zone, and cannot span across multiple
 - "Before campaign start date" is evaluated based on the campaign-specific time zone
 - Agent schedules are stored in the timezone of their assigned campaign
 
-##### Campaign modification
+#### Campaign modification
 Can campaign data be modified? if campaign start and end dates are modified, does the system check that locked routes continue to meet requirements?
+
 **Assumptions made:**
 - Campaign data cannot be modified after campaign was created
 
-#### Risks
+### Risks
 
 **Timezone Boundary Issues:**
 - Routes could be reassigned across timezones, leading to agent route overlaps
