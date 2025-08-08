@@ -30,7 +30,7 @@ Execution Date: 2025-08-07
 |Test|Status|Notes|
 |-|-|-|
 |Status code (200)|PASSED✅||
-|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
+|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
 |Response schema|PASSED✅||
 |Max results respected|PASSED✅||
 |Distance respected|PASSED✅||
@@ -40,5 +40,70 @@ Execution Date: 2025-08-07
 |Test|Status|Notes|
 |-|-|-|
 |Status code (200)|PASSED✅||
-|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
+|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
 |Response schema|PASSED✅||
+
+## Part 3 - Manual Testing Assignement
+
+[Link to Google Sheets with Test Cases and Test Data](https://docs.google.com/spreadsheets/d/1HmcDNH1BCf0NafKupNGiH-dNMn1XwWoTdhj98v02qM0/edit?usp=sharing)
+
+### Sample Bug Report
+
+```
+ID: 43050
+Reported By: Tomas Fernandez
+Date: 2025/8/8
+Severity: High
+Priority: Critical
+Status: Open
+Tags: Admin Dashboard - Route Reassignement - Permissions
+Version: v3.4.34
+Related Test Case: RR007
+Related Issues:
+```
+
+|Title|Description|Setup|Steps to Reproduce|Expected Results|Actual Results|
+|-|-|-|-|-|-|
+|Non-manager user can reassign routes|An user without manager permissions for the campaign was able to reassign a route between agents. System should prevent unauthorized users from assigning routes|Android 14.5<br/>acc: test+nonmanager@oppizi.com<br/>pass: fuHSAUDFH421d|1-Log into test user<br/>2-Open Admin Dashboard<br/>3-Navigate to Campaign futureCampaignIndoor<br/>4-Select Route R2001<br/>5-Click Reassign Route button<br/>6-Select Agent YY as target agent<br/>7-Click confirm button|Reassignement fails, Admin receives error message detailing they do not posses Manager permissions for selected Campaign|Route reassignement is successful, route R2001 is assigned to Agent YY, audit log entry is created and emails are sent to agents ZZ and YY|
+
+### Assumptions & Risks
+
+#### Key Assumptions made
+
+##### Location Type Matching Requirement
+The requirements state that "location types must match" but dont specify if location is a property of routes, agents or both
+**Assumptions made:** 
+- Routes have location types
+- Agents have location capabilities that determine what types of routes they can perform
+
+
+##### Timezone scope
+No clear definition on how the system handles multi-timezone operations
+**Assumptions made:** 
+- Campaigns operate in a single time zone, and cannot span across multiple
+- "Before campaign start date" is evaluated based on the campaign-specific time zone
+- Agent schedules are stored in the timezone of their assigned campaign
+
+##### Campaign modification
+Can campaign data be modified? if campaign start and end dates are modified, does the system check that locked routes continue to meet requirements?
+**Assumptions made:**
+- Campaign data cannot be modified after campaign was created
+
+#### Risks
+
+**Timezone Boundary Issues:**
+- Routes could be reassigned across timezones, leading to agent route overlaps
+- Campaigns that span timezone boundaries lead to ambiguous start times
+
+### Checklist for Regression Impact
+
+#### Core system modules
+- Campaign management
+- Route planning
+#### Security
+- User management
+- User permissions
+- Campaign permissions
+#### Business
+- Agent compensation
+- Campaign costs
