@@ -29,17 +29,17 @@ Execution Date: 2025-08-07
 **GET /poi/**
 |Test|Status|Notes|
 |-|-|-|
-|Status code (200)|PASSED:white_check_mark:||
-|Response time (<1000ms)|FAILED*:x:|Sometimes passes, depends on server load. Consistently under 1500ms|
-|Response schema|PASSED:white_check_mark:||
-|Max results respected|PASSED:white_check_mark:|
-|Distance respected|PASSED:white_check_mark:|
-|Country Code respected|PASSED:white_check_mark:|
+|Status code (200)|PASSED :white_check_mark:||
+|Response time (<1000ms)|FAILED* :x:|Sometimes passes, depends on server load. Consistently under 1500ms|
+|Response schema|PASSED :white_check_mark:||
+|Max results respected|PASSED :white_check_mark:|
+|Distance respected|PASSED :white_check_mark:|
+|Country Code respected|PASSED :white_check_mark:|
 
 
 **GET /referencedata/**
 |Test|Status|Notes|
 |-|-|-|
-|Status code (200)|PASSED:white_check_mark:||
-|Response time (<1000ms)|FAILED*:x:|Sometimes passes, depends on server load. Consistently under 1500ms|
-|Response schema|PASSED:white_check_mark:||
+|Status code (200)|PASSED :white_check_mark:||
+|Response time (<1000ms)|FAILED* :x:|Sometimes passes, depends on server load. Consistently under 1500ms|
+|Response schema|PASSED :white_check_mark:||
