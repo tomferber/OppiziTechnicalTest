@@ -13,15 +13,9 @@ PDFs available in repository
 
 ### OR
 
-Copy the contents of the file /OppiziTechnicalTest/Part2/Tomas Fernandez Bernis - Oppizi Tech Test.postman_collection.json
-
-Go to Workspace -> Select Import -> Paste the contents
-
-Copy the contents of the file /OppiziTechnicalTest/Part2/OpenChargeMap.postman_environment.json
-
-Go to Workspace -> Import -> Paste the contents
-
-Select the OpenChargeMap enviorment
-
-
-Run the requests GetPOT and GetReferenceData
+1. Copy the contents of the file /OppiziTechnicalTest/Part2/Tomas Fernandez Bernis - Oppizi Tech Test.postman_collection.json
+2. Go to Workspace -> Select Import -> Paste the contents
+3. Copy the contents of the file /OppiziTechnicalTest/Part2/OpenChargeMap.postman_environment.json
+4. Go to Workspace -> Import -> Paste the contents
+5. Select the OpenChargeMap enviorment
+6. Run the requests GetPOT and GetReferenceData
