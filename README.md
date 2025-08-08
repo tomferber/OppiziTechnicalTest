@@ -17,5 +17,26 @@ PDFs available in repository
 2. Go to Workspace -> Select Import -> Paste the contents
 3. Copy the contents of the file /OppiziTechnicalTest/Part2/OpenChargeMap.postman_environment.json
 4. Go to Workspace -> Import -> Paste the contents
-5. Select the OpenChargeMap enviorment
-6. Run the requests GetPOT and GetReferenceData
+5. Select the OpenChargeMap environment
+6. Run the requests GetPOI and GetReferenceData
+
+### Test report
+Execution Date: 2025-08-07
+
+**GET /poi/**
+|Test|Status|Notes|
+|-|-|-|
+|Status code (200)|PASSED||
+|Response time (<1000ms)|PASSED*|Sometimes fails, depends on server load. Consistently under 1500ms|
+|Response schema|PASSED||
+|Max results respected|PASSED|
+|Distance respected|PASSED|
+|Country Code respected|PASSED|
+
+
+**GET /referencedata/**
+|Test|Status|Notes|
+|-|-|-|
+|Status code (200)|PASSED||
+|Response time (<1000ms)|PASSED*|Sometimes fails, depends on server load. Consistently under 1500ms|
+|Response schema|PASSED||
