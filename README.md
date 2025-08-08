@@ -30,7 +30,7 @@ Execution Date: 2025-08-07
 |Test|Status|Notes|
 |-|-|-|
 |Status code (200)|PASSED✅||
-|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
+|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
 |Response schema|PASSED✅||
 |Max results respected|PASSED✅||
 |Distance respected|PASSED✅||
@@ -40,5 +40,5 @@ Execution Date: 2025-08-07
 |Test|Status|Notes|
 |-|-|-|
 |Status code (200)|PASSED✅||
-|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
+|Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
 |Response schema|PASSED✅||
