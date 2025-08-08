@@ -1,2 +1,2 @@
-# OppiziTechnicalTest
-Assignment – QA Engineer  (Automation &amp; Manual)
+# Assignment – QA Engineer - Tomas Fernandez Bernis
+
