@@ -1,0 +1,219 @@
+{
+	"info": {
+		"_postman_id": "d7b876ed-db41-46a2-8c3e-3f66b6d213d8",
+		"name": "Tomas Fernandez Bernis - Oppizi Tech Test",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47432599",
+		"_collection_link": "https://tfernandezbernis-6081900.postman.co/workspace/Tomas's-Workspace~2fb2e536-0de9-4454-8791-2b19fbfa28bf/collection/47432599-d7b876ed-db41-46a2-8c3e-3f66b6d213d8?action=share&source=collection_link&creator=47432599"
+	},
+	"item": [
+		{
+			"name": "GetPOI",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code (200)\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time (<1000ms)\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"    \"type\": \"array\",\r",
+							"    \"items\": {\r",
+							"    \"type\": \"object\",\r",
+							"    \"required\": [\"AddressInfo\"],\r",
+							"    \"properties\": {\r",
+							"      \"AddressInfo\": {\r",
+							"        \"type\": \"object\",\r",
+							"        \"required\": [\"Latitude\", \"Longitude\", \"Distance\", \"Country\"],\r",
+							"        \"properties\": {\r",
+							"          \"Latitude\":  { \"type\": \"number\" },\r",
+							"          \"Longitude\": { \"type\": \"number\" },\r",
+							"          \"Distance\":  { \"type\": \"number\" },\r",
+							"          \"Country\": {\r",
+							"            \"type\": \"object\",\r",
+							"            \"required\": [\"ISOCode\"],\r",
+							"            \"properties\": {\r",
+							"              \"ISOCode\": { \"type\": \"string\" }\r",
+							"            }\r",
+							"          }\r",
+							"        }\r",
+							"      }\r",
+							"    }\r",
+							"  }\r",
+							"}\r",
+							"\r",
+							"pm.test(\"Response schema\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});\r",
+							"\r",
+							"const poi = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Max results respected\", () => {\r",
+							"  pm.expect(poi.length).to.be.at.most(parseInt(pm.environment.get(\"maxresults\")))\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Distance respected\", () => {\r",
+							"  poi.forEach(poi => {\r",
+							"    pm.expect(poi.AddressInfo.Distance).to.be.below(parseFloat(pm.environment.get(\"distance\")))\r",
+							"  })\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Country Code respected\", () => {\r",
+							"  poi.forEach(poi => {\r",
+							"    pm.expect(poi.AddressInfo.Country.ISOCode).to.eql(pm.environment.get(\"countrycode\"));\r",
+							"  });\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/poi/?key={{apiKey}}&latitude={{latitude}}&longitude={{longitude}}&distance={{distance}}&countrycode={{countrycode}}&maxresults={{maxresults}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"poi",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						},
+						{
+							"key": "latitude",
+							"value": "{{latitude}}"
+						},
+						{
+							"key": "longitude",
+							"value": "{{longitude}}"
+						},
+						{
+							"key": "distance",
+							"value": "{{distance}}"
+						},
+						{
+							"key": "countrycode",
+							"value": "{{countrycode}}"
+						},
+						{
+							"key": "maxresults",
+							"value": "{{maxresults}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GerReferenceData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code (200)\", () => {\r",
+							"  pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time (<1000ms)\", () => {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"\r",
+							"const schema = {\r",
+							"  type: \"object\",\r",
+							"  required: [\"ChargerTypes\", \"ConnectionTypes\"],\r",
+							"  properties: {\r",
+							"    ChargerTypes: {\r",
+							"      type: \"array\",\r",
+							"      items: {\r",
+							"        type: \"object\",\r",
+							"        required: [\"ID\", \"Title\"],\r",
+							"        properties: {\r",
+							"          ID: { type: \"number\" },\r",
+							"          Title: { type: \"string\" }\r",
+							"        }\r",
+							"      }\r",
+							"    },\r",
+							"    ConnectionTypes: {\r",
+							"      type: \"array\",\r",
+							"      items: {\r",
+							"        type: \"object\",\r",
+							"        required: [\"ID\", \"Title\"],\r",
+							"        properties: {\r",
+							"          ID: { type: \"number\" },\r",
+							"          Title: { type: \"string\" }\r",
+							"        }\r",
+							"      }\r",
+							"    }\r",
+							"  }\r",
+							"};\r",
+							"\r",
+							"pm.test(\"Response schema\", () => {\r",
+							"    pm.response.to.have.jsonSchema(schema);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/referencedata/?key={{apiKey}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"referencedata",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{apiKey}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
