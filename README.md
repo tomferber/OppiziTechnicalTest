@@ -36,12 +36,18 @@ Execution Date: 2025-08-07
 |Distance respected|PASSED✅||
 |Country Code respected|PASSED✅||
 
+![Get POI Results](https://github.com/tomferber/OppiziTechnicalTest/blob/main/Part%202%20-%20API%20Testing/GetPOIResults.png?raw=true)
+
+
 **GET /referencedata/**
 |Test|Status|Notes|
 |-|-|-|
 |Status code (200)|PASSED✅||
 |Response time (<1000ms)|FAILED❌|⚠️Sometimes passes, depends on server load. Consistently under 1500ms|
 |Response schema|PASSED✅||
+
+![Get Reference Data Results](https://github.com/tomferber/OppiziTechnicalTest/blob/main/Part%202%20-%20API%20Testing/GetReferenceDataResults.png?raw=true)
+
 
 ## Part 3 - Manual Testing Assignement
 
